@@ -1,0 +1,30 @@
+<ion-view view-title="Voltar" align-title="center">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up" ng-style="{'background-image':'url(/img/trees/'+ctrl.id+'.jpg)','background-repeat': 'no-repeat','background-position':'center','background-origin': 'content-box','background-size':'cover'}">
+            
+            <div class="content" style="background-color: rgba(27, 27, 25, 0.6);">
+                <h3><a class="light">{{ctrl.dados.nome_cie}}</h3>
+                <h4>{{ctrl.dados.origem}}</h4>
+            </div>
+        </div>
+        
+        <div class="list card stable-bg">
+            <div class="item item-body" style="color: black">
+                {{ctrl.classTree}}
+                {{ctrl.dados.info}}
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" data-ink-color="#00cc00" data-ink-opacity="0.1">
+                    <i class="icon ion-map"></i> Ver no mapa
+                </a>
+                <a class="tab-item" data-ink-color="#00cc00" data-ink-opacity="0.8">
+                    <i class="icon ion-more"></i> Ler Mais
+                </a>
+                <a class="tab-item" data-ink-color="#00cc00" data-ink-opacity="0.8">
+                    <i class="icon ion-share"></i> Compartilhar
+                </a>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

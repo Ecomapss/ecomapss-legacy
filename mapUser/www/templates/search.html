@@ -1,8 +1,12 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Busca">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Buscar</span>
+        <input placeholder="Buscar" ng-model="search" type="text">
+      </label>
+      <ion-item ng-repeat="item in ctrl.dados | filter:search" ng-click="ctrl.viewData(item._id)">
+        {{item.nome_cie}}
       </ion-item>
     </ion-list>
   </ion-content>
