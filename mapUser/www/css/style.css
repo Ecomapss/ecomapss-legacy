@@ -2,12 +2,26 @@
 
 /* Faces */
 
+
  @font-face {
       font-family: "TimeBurner";
       src: url("fonts/timeburner.ttf");
     }
 
+ @font-face {
+      font-family: "Neoteric";
+      src: url("fonts/neoteric.ttf");
+    }
 
+/*Trees */
+
+#font {
+    font-family: "TimeBurner" !important;
+    text-align: justify;
+    font-size: 18px;
+    text-indent: 20px;
+
+}
 /*Trees */
 
 
@@ -17,6 +31,18 @@
 
 
 ==================================*/
+
+.card .img-card{
+    padding: 0 !important;
+}
+
+.item .separete {
+    top: 50px !important;
+}
+
+div.card .img-card img {
+    width: 100% !important;
+}
 .bar {
     box-shadow: none !important;
     font-family: "TimeBurner" !important;
@@ -396,6 +422,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', end
      -o-filter: invert(100%);
     filter: invert(100%);
 }
+
+.neotic {
+    font-family: "Neoteric" !important;
+    font-size: 24px;
+    border-top: 2px solid dodgerblue !important;
+    height: 80px;
+}
+
+.topApart {
+    margin-top: 20px; 
+}
+
+.search-input {
+    top: 20px;
+    bottom: 40px;
+    font-family: "Neoteric" !important;
+    font-size: 20px;
+}
+
 
 
 
