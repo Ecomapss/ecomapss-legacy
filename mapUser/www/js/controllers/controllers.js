@@ -205,6 +205,7 @@ angular.module('starter.controllers', [])
     self.id = $stateParams.id;
     self.dados = {};
     dataService.getById(self.id).then(function (data) {
+      self.source = "img/trees/" + self.id + ".jpg";
       self.dados = data;
       console.log(self.dados);
       $scope.apply;

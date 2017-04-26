@@ -1,17 +1,51 @@
 <ion-view view-title="Voltar" align-title="center">
-    <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="hero slide-up" ng-style="{'background-image':'url(/img/trees/'+ctrl.id+'.jpg)','background-repeat': 'no-repeat','background-position':'center','background-origin': 'content-box','background-size':'cover'}">
-            
-            <div class="content" style="background-color: rgba(27, 27, 25, 0.6);">
-                <h3><a class="light">{{ctrl.dados.nome_cie}}</h3>
-                <h4>{{ctrl.dados.origem}}</h4>
-            </div>
+    <ion-content>
+        <div class="title-img-tree hero slide-up">
+            <img id="inter-img" ng-src={{ctrl.source}}></img>
         </div>
-        
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-leaf calm"></i>
+                {{ctrl.dados.nome_pop}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-erlenmeyer-flask calm"></i>
+                {{ctrl.dados.nome_cie}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-cloud calm"></i>
+                {{ctrl.dados.clima}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-heart calm"></i>
+                {{ctrl.dados.familia}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-clipboard calm"></i>
+                {{ctrl.dados.categoria}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-flag calm"></i>
+                {{ctrl.dados.origem}}   
+            </a>
+        </div>
+         <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-contrast calm"></i>
+                {{ctrl.dados.luminosidade}}   
+            </a>
+        </div>
+         <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-stats-bars calm"></i>
+                {{ctrl.dados.altura}}   
+            </a>
+        </div>
         <div class="list card stable-bg">
-            <div class="item item-body" style="color: black">
-                {{ctrl.classTree}}
-                {{ctrl.dados.info}}
+            <div class="item item-body divide" id="font" style="color: black">
+                {{ctrl.classTree}} {{ctrl.dados.info}}
             </div>
             <div class="item tabs tabs-secondary tabs-icon-left">
                 <a class="tab-item" data-ink-color="#00cc00" data-ink-opacity="0.1">
