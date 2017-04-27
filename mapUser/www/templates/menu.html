@@ -15,6 +15,7 @@
         <button id="fab" ng-click="scan()" class="button button-positive button-fab button-fab-bottom-right icon-qrcode">
             <span class="icon-qrcode"></span>
         </button>
+        <ion-nav-view name="dados"></ion-nav-view>
         <ion-tabs class="tabs-balanced">
             <ion-tab title="Cadastro" icon="ion-leaf" href="#/app/home">
                 <ion-nav-view name="home"></ion-nav-view>
@@ -26,7 +27,6 @@
                 <ion-nav-view name="search"></ion-nav-view>
             </ion-tab>
         </ion-tabs>
-
     </ion-side-menu-content>
     <ion-side-menu side="left">
         <ion-header-bar class="expanded">
@@ -35,11 +35,8 @@
                 Olá, {{"Nome "}}
             </div>
         </ion-header-bar>
-        <ion-content class="stable-bg has-expanded-header">
+        <ion-content class="light-bg has-expanded-header">
             <ion-list>
-                <ion-item nav-clear menu-close href="../demo/www/index.html">
-                    <i class="ion ion-star"></i> Teste
-                </ion-item>
                 <ion-item nav-clear menu-close href="#/app/components">
                     Editar Perfil
                 </ion-item>

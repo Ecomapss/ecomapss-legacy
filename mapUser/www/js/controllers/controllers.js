@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('HomeCtrl', ['ionicMaterialMotion', '$timeout', function (ionicMaterialMotion, $timeout) {
+  .controller('HomeCtrl', ['ionicMaterialMotion', '$timeout', '$scope', function (ionicMaterialMotion, $timeout, $scope) {
 
   }])
 
@@ -74,36 +74,41 @@ angular.module('starter.controllers', [])
     function marks() {
       getPoints.get().then(function (res) {
         var forest = res.data;
-        var shape = {
-          coords: [1, 1, 1, 20, 18, 20, 18, 1],
-          type: 'poly'
-        };
+        console.log(res);
         mark = [];
         popup = [];
         for (var i = 0; i < forest.length; i++) {
           // console.log(forest[i]);
-          lat = forest[i].lat;
-          long = forest[i].long;
+          lat = Number.parseFloat(forest[i].loc[0].lat);
+          long = Number.parseFloat(forest[i].loc[0].lng);
+          console.log(lat, long);
           info = forest[i].nome_pop;
           var image = 'img/tree.png';
           ma = new google.maps.Marker({
             map: $scope.map,
             animation: google.maps.Animation.DROP,
-            shape: shape,
             title: info,
             icon: image,
             position: new google.maps.LatLng(lat, long),
             info: info
           });
-          var conteudo = forest[i].info;
-
+          var conteudo = forest[i];
           atach(conteudo, ma);
         }
 
 
         function atach(msg, mark) {
           var infoWindow = new google.maps.InfoWindow({
-            content: msg,
+            content: '<div>' +
+            '<div class="iw-head"><b>'+msg.nome_cie+'</b></div>' +
+            '<div class="iw-content">' +
+            '<div class="iw-pop">'+msg.nome_pop+'</div>' +
+            '<img src="img/trees/'+msg._id+'.jpg" height="140" width="240">' +
+            '<p> <b>Clima: </b>'+msg.clima+'<br> <b>Origem:</b> '+msg.origem+'<br>' +
+            '</div>' +
+            '<a ng-click="function (){console.log("teste")}" class="iw-subTitle">Mais Dados</a>' +
+            '<div class="iw-bottom-gradient"></div>' +
+            '</div>',
             maxWidth: 500
           });
 
@@ -117,87 +122,73 @@ angular.module('starter.controllers', [])
     }
     marks();
 
+    $scope.go = function (id) {
+      console.log("teste");
+
+      $state.go('app.dados', { id: id });
+    }
+
 
     $scope.mapCreated = function (map) {
       $scope.map = map;
     };
 
-    $scope.centerOnMe = function () {
-      console.log("Centering");
-      if (!$scope.map) {
-        console.log('Não existe')
+    // $scope.centerOnMe = function () {
+    //   console.log("Centering");
+    //   if (!$scope.map) {
+    //     console.log('Não existe')
 
-        return;
-      }
+    //     return;
+    //   }
 
-      $scope.loading = $ionicLoading.show({
-        content: 'Localizando',
-        showBackdrop: false
-      });
+    //   $scope.loading = $ionicLoading.show({
+    //     content: 'Localizando',
+    //     showBackdrop: false
+    //   });
 
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        console.log("Centering");
-        console.log('Got pos', pos);
-        $scope.loading.hide();
-        $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-      }, function (error) {
-        $scope.loading.hide();
-        alert('Erro ao procurar localização: ' + error.message);
-      }, { timeout: 10000 });
-    };
+    //   navigator.geolocation.getCurrentPosition(function (pos) {
+    //     console.log("Centering");
+    //     console.log('Got pos', pos);
+    //     $scope.loading.hide();
+    //     $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+    //   }, function (error) {
+    //     $scope.loading.hide();
+    //     alert('Erro ao procurar localização: ' + error.message);
+    //   }, { timeout: 10000 });
+    // };
 
-    var marker;
+    // var marker;
 
-    var watchOptions = {
-      timeout: 15000,
-      enableHightAccuracy: false
-    };
+    // var watchOptions = {
+    //   timeout: 15000,
+    //   enableHightAccuracy: false
+    // };
 
-    var watch = $cordovaGeolocation.watchPosition(watchOptions);
+    // var watch = $cordovaGeolocation.watchPosition(watchOptions);
 
-    watch.then(null,
-      function (err) {
-        alert("Error: " + err.message);
-      },
-      function (position) {
-        console.log(position);
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        $scope.map.setCenter(new google.maps.LatLng(lat, lng));
+    // watch.then(null,
+    //   function (err) {
+    //     alert("Error: " + err.message);
+    //   },
+    //   function (position) {
+    //     console.log(position);
+    //     lat = position.coords.latitude;
+    //     lng = position.coords.longitude;
+    //     $scope.map.setCenter(new google.maps.LatLng(lat, lng));
 
-        google.maps.event.addListener($scope.map, 'idle', function () {
-          if (marker) {
-            marker.setMap(null);
-          }
-          marker = new google.maps.Marker({
-            map: $scope.map,
-            animation: google.maps.Animation.DROP,
-            position: new google.maps.LatLng(lat, lng)
-          });
-        });
-      }
-    )
+    //     google.maps.event.addListener($scope.map, 'idle', function () {
+    //       if (marker) {
+    //         marker.setMap(null);
+    //       }
+    //       marker = new google.maps.Marker({
+    //         map: $scope.map,
+    //         animation: google.maps.Animation.DROP,
+    //         position: new google.maps.LatLng(lat, lng)
+    //       });
+    //     });
+    //   }
+    // )
 
-    $scope.addMrk = function (position) {
-      var markerTree;
-      var posOptions = { timeout: 15000, enableHighAccuracy: true };
-      $cordovaGeolocation
-        .getCurrentPosition(posOptions)
-        .then(function (position) {
-          var lat = position.coords.latitude
-          var lng = position.coords.longitude
-
-          var image = 'img/tree.png',
-            markerTree = new google.maps.Marker({
-              map: $scope.map,
-              animation: google.maps.Animation.DROP,
-              icon: image,
-              position: new google.maps.LatLng(lat, lng)
-            });
-        }, function (err) {
-          // error
-        });
-    }
   }])
 
   .controller('DadosCtrl', ['$scope', '$stateParams', 'dataService', '$timeout', 'ionicMaterialMotion', 'ionicMaterialInk', function ($scope, $stateParams, dataService, $timeout, ionicMaterialMotion, ionicMaterialInk) {

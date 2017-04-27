@@ -6,13 +6,17 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'starter.directives', 'starter.services', 'ngCordova'])
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $timeout, $cordovaSplashscreen) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
+
+        $timeout(function () {
+          $cordovaSplashscreen.hide()
+        }, 4000)
 
       }
       if (window.StatusBar) {
@@ -59,7 +63,6 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
           }
         }
       })
-
       .state('app.search', {
         url: '/search',
         views: {

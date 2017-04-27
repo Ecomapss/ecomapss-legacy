@@ -19,6 +19,33 @@
     padding-top: 60px;
 }
 
+.iw-head {
+    padding: 7px;
+    text-align: center;
+    background-color: #0066ff; 
+    color: white;
+}
+.iw-subTitle {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.iw-bottom-gradient {
+    background-color: lightslategray;
+    padding: 10px;
+    color: white;
+}
+
+.iw-content  {
+    padding-bottom: 10px;
+    margin-top: 0px;
+}
+
+.iw-content .iw-pop {
+    padding: 5px;
+}
+
 #font {
     float: left;
     color: black;
@@ -71,8 +98,8 @@
     padding: 0 !important;
 }
 
-.item .separete {
-    top: 50px !important;
+.separete {
+    top: 20px !important;
 }
 
 div.card .img-card img {
@@ -458,9 +485,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', end
     filter: invert(100%);
 }
 
+ion-content {
+    background-color:#f5f5f0; 
+}
+
+.img-slide {
+    height: 40px !important;
+    width: 20px !important;
+}
+
 .neotic {
     margin-bottom: 20px;
-    background-color: #eeffcc;
+    background-color: white;
     box-shadow: 5px 5px 3px  #f2f2f2;
     font-family: "Neoteric" !important;
     font-size: 24px;
