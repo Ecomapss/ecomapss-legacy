@@ -1,30 +1,32 @@
 /* Empty. Add your own CSS if you like */
 
+
 /* Faces */
 
+@font-face {
+    font-family: "TimeBurner";
+    src: url("fonts/timeburner.ttf");
+}
 
- @font-face {
-      font-family: "TimeBurner";
-      src: url("fonts/timeburner.ttf");
-    }
+@font-face {
+    font-family: "Neoteric";
+    src: url("fonts/neoteric.ttf");
+}
 
- @font-face {
-      font-family: "Neoteric";
-      src: url("fonts/neoteric.ttf");
-    }
 
 /*Trees */
 
-.things{
+.things {
     padding-top: 60px;
 }
 
 .iw-head {
     padding: 7px;
     text-align: center;
-    background-color: #0066ff; 
+    background-color: #0066ff;
     color: white;
 }
+
 .iw-subTitle {
     margin-top: 5px;
     text-align: center;
@@ -37,7 +39,7 @@
     color: white;
 }
 
-.iw-content  {
+.iw-content {
     padding-bottom: 10px;
     margin-top: 0px;
 }
@@ -74,27 +76,28 @@
     overflow: hidden;
 }
 
-#inter-img{
+#inter-img {
     left: 0 !important;
     position: absolute;
     height: 100% !important;
     width: 100% !important;
 }
+
+
 /*Trees */
-
-
 
 
 /* General
 
 
 ==================================*/
-.list .item .button div{
+
+.list .item .button div {
     text-align: center !important;
     font-size: 18px;
 }
 
-.card .img-card{
+.card .img-card {
     padding: 0 !important;
 }
 
@@ -105,18 +108,18 @@
 div.card .img-card img {
     width: 100% !important;
 }
+
 .bar {
     box-shadow: none !important;
     font-family: "TimeBurner" !important;
 }
 
-.bar-header{
-  height: 50px;
-
+.bar-header {
+    height: 50px;
 }
 
-.has-header{
-  top:60px;
+.has-header {
+    top: 60px;
 }
 
 h1 {
@@ -125,8 +128,10 @@ h1 {
     font-size: 42px;
 }
 
+
 /* Utilities
 ==================================*/
+
 .title-bordered {
     border-top: solid 2px #bbb;
 }
@@ -139,6 +144,7 @@ p {
 .scroll {
     height: 100%;
 }
+
 
 /* Utilities */
 
@@ -176,17 +182,18 @@ p {
     position: static;
 }
 
+
 /* Empty. Add your own CSS if you like */
 
 map {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.scroll {
-  height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
+.scroll {
+    height: 100%;
+}
 
 .bold {
     font-weight: bold;
@@ -201,6 +208,8 @@ map {
     background-color: #263238 !important;
     color: #fff;
 }
+
+
 /* Menu */
 
 .menu .bar.bar-header.expanded {
@@ -214,7 +223,7 @@ map {
     font-weight: bold;
 }
 
-.item-radio input:checked ~ .item-content {
+.item-radio input:checked~.item-content {
     background: transparent;
 }
 
@@ -286,6 +295,8 @@ map {
     opacity: 1;
     z-index: 9;
 }
+
+
 /* CODE */
 
 .code {
@@ -365,6 +376,7 @@ map {
 
 /* Menu
 =================================*/
+
 .menu .bar.bar-header.expanded {
     transition: all .5s ease-in-out;
 }
@@ -399,8 +411,10 @@ map {
     content: "\f2ca";
 }
 
+
 /* Login
 ==================================*/
+
 .app-icon {
     background-color: #fff;
     background: url('../img/crown.jpg') center;
@@ -419,7 +433,6 @@ map {
 .error {
     border: red;
 }
-
 
 .signup {
     color: white;
@@ -445,7 +458,6 @@ map {
     padding: 10px;
     margin-top: 20px;
     width: 100%;
-    border-radius: 8px;
 }
 
 
@@ -457,36 +469,40 @@ map {
 }
 
 .loginback {
-background: rgb(0,183,234); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(0,183,234,1) 0%, rgba(0,158,195,1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, rgba(0,183,234,1) 0%,rgba(0,158,195,1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, rgba(0,183,234,1) 0%,rgba(0,158,195,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
+    background: rgb(0, 183, 234);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(0, 183, 234, 1) 0%, rgba(0, 158, 195, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0, 183, 234, 1) 0%, rgba(0, 158, 195, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0, 183, 234, 1) 0%, rgba(0, 158, 195, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3', GradientType=0);
+    /* IE6-9 */
 }
+
 
 /*QR-Code*/
 
 .button-fab-bottom-right {
-
     bottom: 16px !important;
-
 }
 
 .icon-qrcode {
     background-color: #ff6600 !important;
-    background-image: url('../img/qr-code.png'); 
+    background-image: url('../img/qr-code.png');
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
-       -webkit-filter: invert(100%);
-   -moz-filter: invert(100%);
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
     -ms-filter: invert(100%);
-     -o-filter: invert(100%);
+    -o-filter: invert(100%);
     filter: invert(100%);
 }
 
 ion-content {
-    background-color:#f5f5f0; 
+    background-color: #f5f5f0;
 }
 
 .img-slide {
@@ -497,7 +513,7 @@ ion-content {
 .neotic {
     margin-bottom: 20px;
     background-color: white;
-    box-shadow: 5px 5px 3px  #f2f2f2;
+    box-shadow: 5px 5px 3px #f2f2f2;
     font-family: "Neoteric" !important;
     font-size: 24px;
     border-top: 2px solid dodgerblue !important;
@@ -505,7 +521,7 @@ ion-content {
 }
 
 .topApart {
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .search-input {
@@ -514,7 +530,3 @@ ion-content {
     font-family: "Neoteric" !important;
     font-size: 20px;
 }
-
-
-
-
