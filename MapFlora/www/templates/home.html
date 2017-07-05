@@ -1,0 +1,20 @@
+<ion-view view-title="Home">
+    <ion-content class="padding">
+        <section id="cd-timeline" class="cd-container">
+            <div ng-repeat="item in hm.dados track by $index">
+                <div class="cd-timeline-block">
+                    <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
+                    <div class="cd-timeline-picture text-center balanced">
+                        <img src="img/tree.jpg"></img>
+                    </div>
+                    <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->
+                    <div class="cd-timeline-content padding balanced">
+                        <h5 class="marginBottom0 marginTop0">Atividade</h5>
+                        <p class="marginTop5 cd-author">{{nome}}</p>
+                        <p class="timelineText">{{item.act}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,19 @@
+<ion-view view-title="Busca">
+    <ion-content>
+        <ion-list>
+            <div class="padding">
+                <label class="item item-input item-floating-label search-input">
+        <span class="input-label">BUSCAR</span>
+        <input placeholder="BUSCAR" ng-model="search" type="text">
+      </label>
+                <div class="padding topApart">
+                    <ion-item class="neotic" ng-repeat="item in ctrl.dados | filter:search" ng-click="ctrl.viewData(item._id)">
+                        {{item.nome_cie}}
+
+                        <p>{{item.nome_pop}}</p>
+                    </ion-item>
+                </div>
+        </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,53 @@
+<ion-view view-title="Voltar">
+    <ion-content>
+        <div class="title-img-tree hero slide-up">
+            <img id="inter-img" ng-src={{ctrl.source}}></img>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-leaf calm"></i>
+                {{ctrl.dados.nome_pop}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-erlenmeyer-flask calm"></i>
+                {{ctrl.dados.nome_cie}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-cloud calm"></i>
+                {{ctrl.dados.clima}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-heart calm"></i>
+                {{ctrl.dados.familia}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-clipboard calm"></i>
+                {{ctrl.dados.categoria}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-flag calm"></i>
+                {{ctrl.dados.origem}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-contrast calm"></i>
+                {{ctrl.dados.luminosidade}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left"><i class="icon ion-stats-bars calm"></i>
+                {{ctrl.dados.altura}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+            <div class="item item-body divide" id="font" style="color: black">
+                {{ctrl.classTree}} {{ctrl.dados.info}}
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-view view-title="Login" align-title="left">
+    <ion-content class="loginback">
+        <div class="row">
+            <div class="col col-center">
+                <h1 class="login-header padding">
+                    Bem vindo!
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-center">
+                <div class="padding">
+                    <ion-list>
+                        <input class="item loginpage" ng-model="user.email" type="email" placeholder="Email">
+                        <input class="item loginpage" ng-model="user.password" type="password" placeholder="Senha">
+                    </ion-list>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-center">
+                <div class="padding">
+                    <button class="button button-full button-balanced-login" ng-click="lg.login(user)">Login</button>
+                    <button class="button btn-minor button-assertive icon icon-center ion-social-google"></button>
+                    <button ng-click="facebookSignIn()" class="button button-positive icon icon-center ion-social-facebook"></button>
+                </div>
+            </div>
+        </div>
+
+        <p class="signup">
+            <a href="">Esqueceu sua senha?</a> | <a href="">Cadastre-se</a>
+        </p>
+
+    </ion-content>
+</ion-view>
