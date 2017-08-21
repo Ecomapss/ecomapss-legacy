@@ -9,10 +9,8 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
                 cordova.plugins.Keyboard.disableScroll(true);
 
             }
-
             ionic.material.motion.blinds();
-
-
+            
             var isOnline = $cordovaNetwork.isOnline();
             if (!isOnline) {
                 $ionicPopup.confirm({
