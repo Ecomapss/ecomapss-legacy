@@ -1,6 +1,12 @@
 <ion-view view-title="Home">
     <ion-content class="padding">
+        <div ng-if="!hm.hasTimeline()" class="no-timeline">
+            Sua linha do tempo está vazia.
+        </div>
+        <div ng-if="!hm.hasTimeline()" class="no-timefresh ion-earth">
+        </div>         
         <section id="cd-timeline" class="cd-container">
+
             <div ng-repeat="item in hm.dados track by $index">
                 <div class="cd-timeline-block">
                     <!-- CUSTOMIZE YOUR STYLE USING DEFAULT IONIC VALUES SUCH AS POSITIVE, CALM, BALANCED,... -->

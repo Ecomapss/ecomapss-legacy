@@ -28,7 +28,8 @@ angular.module('starter.services', [])
             return false;
         },
         login: function(user) {
-            return $http.post(baseURL + 'auth', user);
+            bd_info.push(user);
+            persistInfo();
         },
         logout: function() {
             bd_token = [];
@@ -81,10 +82,10 @@ angular.module('starter.services', [])
 })
 
 .factory('getPoints', ['$http', '$q', function($http, $q) {
-    var baseURL = 'http://calm-spire-23308.herokuapp.com/';
+    var baseURL = 'lib/';
     return {
         get: function() {
-            return $http.get(baseURL + 'getData');
+            return $http.get(baseURL + 'trees.json');
         }
     }
 }])
@@ -130,8 +131,9 @@ angular.module('starter.services', [])
             getById: function(id) {
                 var deferr = $q.defer();
                 var array = forest[0];
+                console.log(array);
                 for (i = 0; i < array.length; i++) {
-                    if (array[i]._id === id) {
+                    if (array[i]._id.$oid === id) {
                         deferr.resolve(array[i]);
                         console.log(array[i])
                     }

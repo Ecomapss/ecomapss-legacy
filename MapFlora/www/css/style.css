@@ -456,6 +456,12 @@ ion-header-bar {
 /* Login
 ==================================*/
 
+.header-blur {
+      padding: 20px;
+  background: rgb(34,34,34); /* for IE */
+  background: rgba(34,34,34,0.75);
+}
+
 .app-icon {
     background-color: #fff;
     background: url('../img/crown.jpg') center;

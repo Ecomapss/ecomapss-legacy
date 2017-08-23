@@ -277,3 +277,19 @@ Main components
         font-size: 0.875rem;
     }
 }
+
+.no-timeline {
+    text-align: center;
+    color: #cdcfd3;
+    font-size: 25px;
+
+    margin-top: 35%;
+}
+
+div.no-timefresh { 
+    text-align: center;
+    color: #cdcfd3;
+    margin-top: 20%;
+    font-size: 50px;
+
+}
