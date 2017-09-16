@@ -9,17 +9,6 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
                 cordova.plugins.Keyboard.disableScroll(true);
 
             }
-            ionic.material.motion.blinds();
-            
-            var isOnline = $cordovaNetwork.isOnline();
-            if (!isOnline) {
-                $ionicPopup.confirm({
-                    title: "Sem conexão",
-                    content: "Os dados ficaram desatualizados."
-                })
-            }
-
-
             if (window.StatusBar) {
                 StatusBar.backgroundColorByHexString("#28a54c");
             }
@@ -31,7 +20,7 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
     .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         $ionicConfigProvider.tabs.position('top');
         $ionicConfigProvider.navBar.alignTitle('center')
-        $ionicConfigProvider.views.maxCache(0);
+        $ionicConfigProvider.views.maxCache(1);
 
         $stateProvider
             .state('login', {
