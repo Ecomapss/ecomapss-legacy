@@ -16,24 +16,16 @@ angular
   ) {
     // var online = navigator.onLine;
     // if (online) {
-      getPoints.get().then(function(res) {
-        console.log(res);
-        dataService.clear();
-        dataService.addBd(res.data);
-      });
-    // } else {
-    //   $ionicPopup.alert({
-    //     title: "Error!",
-    //     template:
-    //       "Você não está conectado há uma rede, portanto os dados ficarão desatualizados"
-    //   });
-    // }
-    
+    getPoints.get().then(function(res) {
+      console.log(res);
+      dataService.clear();
+      dataService.addBd(res.data);
+    });
+
     var info = TokenFactory.getInfo();
     if (info) {
-        $scope.nome = info.nome;
+      $scope.nome = info.nome;
     }
-    
 
     console.log($scope.nome);
     // if (!TokenFactory.getToken()) {
@@ -101,14 +93,13 @@ angular
       var self = this;
       self.dados = [];
 
-
-    self.hasTimeline = function () {
-      if (self.dados.length == 0) {
-        return false;
-      }
-      return true;
-    }
-    self.dados = ActivityFactory.get();
+      self.hasTimeline = function() {
+        if (self.dados.length == 0) {
+          return false;
+        }
+        return true;
+      };
+      self.dados = ActivityFactory.get();
     }
   ])
   .controller("SearchCtrl", [
@@ -175,10 +166,10 @@ angular
     }
 
     self.login = function(user) {
-    //   $ionicLoading.show({
-    //     template:
-    //       '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
-    //   });
+      //   $ionicLoading.show({
+      //     template:
+      //       '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+      //   });
 
       TokenFactory.login(user);
       $state.go("app.home", {}, { reload: "app" });
@@ -245,7 +236,9 @@ angular
                   msg.origem +
                   "<br>" +
                   "</div>" +
-                  '<a ng-click="function (){console.log("teste")}" class="iw-subTitle">Mais Dados</a>' +
+                  '<a href="#/app/dados/' +
+                  msg._id.$oid +
+                  'class="iw-subTitle">Mais Dados</a>' +
                   '<div class="iw-bottom-gradient"></div>' +
                   "</div>",
                 maxWidth: 500

@@ -9,6 +9,7 @@
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
         "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-plugin-mapbox": "git+https://github.com/Telerik-Verified-Plugins/Mapbox.git",
         "cordova-plugin-network-information": "^1.3.3",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.1",
@@ -47,7 +48,10 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-network-information": {},
             "phonegap-plugin-barcodescanner": {},
-            "cordova-plugin-geolocation": {}
+            "cordova-plugin-geolocation": {},
+            "cordova-plugin-mapbox": {
+                "ACCESS_TOKEN": "pk.eyJ1IjoibXNsYWNlcmRhIiwiYSI6ImNqNnBidjQ1aTBlc3MycWwyM3djcGprZXIifQ.-HGQg6E3-VMnQcduFSS0MA"
+            }
         },
         "platforms": [
             "android"
