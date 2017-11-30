@@ -1,124 +1,162 @@
-angular
-  .module("starter.controllers")
-  .controller("MapCtrl", [
-    "getPoints",
-    "$scope",
-    "$ionicLoading",
-    "$cordovaGeolocation",
-    function(getPoints, $scope, $ionicLoading, $cordovaGeolocation) {
-      //Função para marcar no mapa
-      function marks() {
-        //Captura os pontos em um serviço
-        getPoints.get().then(
-          function(res) {
-            //recebe os dados das arvores
-            var forest = res.data;
-            mark = [];
-            popup = [];
-            //Realiza um laço para distribuir os pontos no mapa
-            for (var i = 0; i < forest.length; i++) {
-              if (forest[i].loc.length > 1) {
-                console.log(forest[i].loc);
-                for (var j = 0; j < forest[i].loc.length; j++) {
-                  lat = Number.parseFloat(forest[i].loc[j].lat);
-                  long = Number.parseFloat(forest[i].loc[j].lng);
+angular.module("starter.controllers").controller("MapCtrl", [
+  "getPoints",
+  "$scope",
+  "$ionicLoading",
+  "$cordovaGeolocation",
+  "dataService",
+  "$state",
+  function(
+    getPoints,
+    $scope,
+    $ionicLoading,
+    $cordovaGeolocation,
+    dataService,
+    $state
+    ) {
+    var Land;
+    var locationsTree = dataService.getLocation()[0];
+    var markers = new Array();
 
-                  info = forest[i].nome_pop;
-                  var image = "img/tree.png";
-                  ma = new google.maps.Marker({
-                    map: $scope.map,
-                    animation: google.maps.Animation.DROP,
-                    title: info,
-                    icon: image,
-                    position: new google.maps.LatLng(lat, long),
-                    info: info
-                  });
-                  var conteudo = forest[i];
-                  atach(conteudo, ma);
-                }
-              }
-            }
+    //Criando o map
+    $scope.mapCreated = function(map, L) {
+      $scope.map = map;
+      Land = L;
+    };
 
-            //Função para fixar uma infowindow ao seu respectivo ponto
-            function atach(msg, mark) {
-              var infoWindow = new google.maps.InfoWindow({
-                content:
-                  "<div>" +
-                  '<div class="iw-head"><b>' +
-                  msg.nome_cie +
-                  "</b></div>" +
-                  '<div class="iw-content">' +
-                  '<div class="iw-pop">' +
-                  msg.nome_pop +
-                  "</div>" +
-                  '<img src="img/trees/' +
-                  msg._id.$oid +
-                  '.jpg" height="140" width="240">' +
-                  "<p> <b>Clima: </b>" +
-                  msg.clima +
-                  "<br> <b>Origem:</b> " +
-                  msg.origem +
-                  "<br>" +
-                  "</div>" +
-                  '<a href="#/app/dados/' +
-                  msg._id.$oid +
-                  'class="iw-subTitle">Mais Dados</a>' +
-                  '<div class="iw-bottom-gradient"></div>' +
-                  "</div>",
-                maxWidth: 500
-              });
+    function removeMarks() {
+      for (var i = 0; i < markers.length; i++) {
+        if (markers[i] != -1) $scope.map.removeLayer(markers[i]);
+      }
+    }
 
-              //Add um listener ao mark para quando clicado abrir a info window
-              mark.addListener("click", function() {
-                infoWindow.open(mark.get("map"), mark);
-              });
-            }
-          },
-          function(err) {
-            console.log(err);
-          }
-        );
+    function load() {
+      $ionicLoading.hide();
+      for (var i = 0; i < locationsTree.length; i++) {
+        if (locationsTree[i].lat && locationsTree[i].lng) {
+          // if (window.cordova) {
+          //   var posOptions = {timeout: 10000, enableHighAccuracy: true};
+          //   $cordovaGeolocation
+          //   .getCurrentPosition(posOptions)
+          //   .then(function (position) {
+          //     var lat  = position.coords.latitude
+          //     var long = position.coords.longitude
+          //     a = calc(lat, long,
+          //       locationsTree[i].lat,
+          //       locationsTree[i].lng
+          //       );
+          //     alert(a);
+          //     if (a < 100.00) {
+           
+          //     }else {
+          //       alert("Não existe arvores perto de vocẽ!");
+          //     }
+          //   }, function(err) {
+          //     alert("Error ao acessar GPS, Verifique se o app tem as permissões necessarias!");
+          //   });
+          // }
+          marker = new Land.marker([
+            locationsTree[i].lat,
+            locationsTree[i].lng
+            ]);
+          marker.bindPopup("Latitude: " + locationsTree[i].lat + "<br>" + " Longitude: " + locationsTree[i].lng).openPopup();
+          markers.push(marker);
+          $scope.map.addLayer(markers[i]);
+        } else markers.push(-1);
+      }
+      $ionicLoading.hide();
+    }
+
+    $scope.$on("$ionicView.enter", function() {
+      locationsTree = dataService.getLocation()[0];
+      if (locationsTree) {
+        // $ionicLoading.show({
+        //   content: "Carregando...",
+        //   showBackdrop: false
+        // });
+
+        removeMarks();
+        markers = new Array();
+        setTimeout(function() {
+          if (Land != null && Land != undefined) load();
+        }, 3000);
+      }
+    });
+
+    //Mudar view
+    $scope.go = function(id) {
+      $state.go("app.dados", { id: id });
+    };
+
+    function degrees_to_radians(degrees) {
+      var pi = Math.PI;
+      return degrees * (pi / 180);
+    }
+
+    function calc(lat1, lon1, lat2, lon2) {
+      var R = 6371e3; // metres
+      var o1 = degrees_to_radians(lat1);
+      var o2 = degrees_to_radians(lat2);
+      var Ap = degrees_to_radians(lat2 - lat1);
+      var Ay = degrees_to_radians(lon2 - lon1);
+
+      var a =
+      Math.sin(Ap / 2) * Math.sin(Ap / 2) +
+      Math.cos(o1) * Math.cos(o2) * Math.sin(Ay / 2) * Math.sin(Ay / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+      var d = R * c;
+
+      return d;
+    }
+
+    //Função para centralizar no usuario
+    $scope.centerOnMe = function() {
+      console.log("Centering");
+
+      if (!$scope.map) {
+        return;
       }
 
-      //Inicia a marcação
-      marks();
+      $scope.loading = $ionicLoading.show({
+        content: "Getting current location...",
+        showBackdrop: false
+      });
 
-      //Mudar view
-      $scope.go = function(id) {
-        $state.go("app.dados", { id: id });
-      };
-
-      //Criando o map
-      $scope.mapCreated = function(map) {
-        $scope.map = map;
-      };
-
-      //Função para centralizar no usuario
-      $scope.centerOnMe = function() {
-        console.log("Centering");
-        if (!$scope.map) {
-          console.log("Não existe");
-          return;
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          console.log("Got pos", pos);
+          $scope.map.setView([pos.coords.latitude, pos.coords.longitude]);
+          $ionicLoading.hide();
+        },
+        function(error) {
+          alert("Unable to get location: " + error.message);
+          $ionicLoading.hide();
         }
-        $ionicLoading.show({
-          content: "Localizando",
-          showBackdrop: true
-        });
-        navigator.geolocation.getCurrentPosition(
-          function(pos) {
-            console.log("Centering");
-            console.log("Got pos", pos);
-            $ionicLoading.hide();
-            $scope.map.setCenter(
-              new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
-            );
-          },
-          function(error) {
-            $ionicLoading.hide();
-            alert("Erro ao procurar localização: " + error.message);
-          },
-          { timeout: 10000 }
         );
-      };
-    }
-  ])
+      // console.log("Centering");
+      // if (!$scope.map) {
+      //   console.log("Não existe");
+      //   return;
+      // }
+      // $ionicLoading.show({
+      //   content: "Localizando",
+      //   showBackdrop: true
+      // });
+      // navigator.geolocation.getCurrentPosition(
+      //   function(pos) {
+      //     console.log("Centering");
+      //     console.log("Got pos", pos);
+      //     $ionicLoading.hide();
+      //     $scope.map.setCenter(
+      //       new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
+      //     );
+      //   },
+      //   function(error) {
+      //     $ionicLoading.hide();
+      //     alert("Erro ao procurar localização: " + error.message);
+      //   },
+      //   { timeout: 10000 }
+      // );
+    };
+  }
+  ]);

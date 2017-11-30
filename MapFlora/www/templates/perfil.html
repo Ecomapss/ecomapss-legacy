@@ -1,0 +1,21 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Seu perfil!</h1>
+        <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+    </ion-header-bar>
+    <ion-content style="margin-top: 50px;">
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                    <span class="input-label">Nome</span>
+                    <input placeholder="First Name" ng-model = "info.nome" type="text">
+            </label>
+            <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input placeholder="First Name" ng-model = "info.email" type="text">
+            </label>
+            <button class="button button-block button-calm ink" data-ink-color="#9DEAFF" ng-click="update()" data-ink-opacity="1">
+                    Salvar
+            </button>
+        </div>
+    </ion-content>
+</ion-modal-view>

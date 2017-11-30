@@ -143,8 +143,8 @@ div.card .img-card img {
 }
 
 .bar {
-    box-shadow: none !important;
-    font-family: "roboto-light" !important;
+    /* box-shadow: none !important; */
+   /* font-family: "roboto-light" !important; */
 }
 
 .bar-header {
@@ -180,6 +180,13 @@ p {
 
 
 /* Utilities */
+
+#img-ifce {
+    max-height: 60px;
+    max-width: 200px;
+    margin-left: 10%;
+    margin-top: 10px; 
+}
 
 .link {
     color: #116262;
@@ -415,7 +422,7 @@ ion-header-bar {
 }
 
 #cd-timeline {
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .menu .bar.bar-header.expanded {
@@ -539,6 +546,7 @@ ion-header-bar {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+        background-position: center;
     background-size: cover;
 }
 
@@ -551,11 +559,14 @@ i.button.ion-navicon {
     font-size: 90px;
 }
 
-
+/*map icon  */
+button#navigate {
+    bottom: 95px !important;
+}
 /*QR-Code*/
 
 .button-fab-bottom-right {
-    bottom: 16px !important;
+    bottom: 58px !important;
 }
 
 ion-footer-bar {
@@ -563,29 +574,28 @@ ion-footer-bar {
 }
 
 .bar-header {
-    height: 50px;
-    font-size: 40px;
+    height: 48px;
+    font-size: 90px !important;
 }
 
 .has-header {
-    top: 50px;
+    top: 0px;
 }
 
-#fab {
-    box-shadow: 2px 2px 1px 1px rgba(255, 255, 255, 0.2);
+/*sobre  */
+
+div.list a.item.item-thumbnail-left img{
+    height: 100%;
+    width: 100%;
 }
+
 
 .icon-qrcode {
-    background-color: #ff6600 !important;
+    background-color: #0099ff    !important;
     background-image: url('../img/qr-code.png');
     background-repeat: no-repeat;
     background-size: 30px;
     background-position: center;
-    -webkit-filter: invert(100%);
-    -moz-filter: invert(100%);
-    -ms-filter: invert(100%);
-    -o-filter: invert(100%);
-    filter: invert(100%);
 }
 
 ion-content {
@@ -603,7 +613,7 @@ ion-content {
     box-shadow: 5px 5px 3px #f2f2f2;
     font-family: "roboto-light" !important;
     font-size: 24px;
-    border-top: 2px solid dodgerblue !important;
+    border-top: 2px solid #6b46e5 !important;
     height: 80px;
 }
 

@@ -1,6 +1,6 @@
 angular
   .module("starter.controllers")
-.controller("AppCtrl", function(
+  .controller("AppCtrl", function(
     $ionicLoading,
     TokenFactory,
     ActivityFactory,
@@ -12,35 +12,103 @@ angular
     $ionicModal,
     $timeout,
     getPoints,
-    dataService
+    dataService,
+    $ionicModal,
+    ionicMaterialMotion,
+    ionicMaterialInk
   ) {
-    // var online = navigator.onLine;
-    // if (online) {
+    var info;
+    var urlImg;
+
+    function load() {
+      info = TokenFactory.getInfo();
+      urlImg = TokenFactory.getAvatar();
+    }
+    load();
+
+    dataService.list().then(function(data) {
+      if (data.length) {
+        self.dados = data[0];
+        $ionicLoading.hide();
+      } else {
+        getPoints.get().then(function(res) {
+          self.dados = res.data;
+          dataService.put(res.data);
+          $ionicLoading.hide();
+        });
+      }
+    });
+
+    $scope.setAvatar = function(url) {
+      TokenFactory.updateAvatar(url);
+      $scope.modal2.hide();
+      $state.go("app.home", { reaload: "app.home" });
+      load();
+      $scope.avatar = urlImg;
+      $scope.modal2.hide();
+    };
+
+    $scope.update = function() {
+      TokenFactory.updateInfos($scope.info);
+      $scope.modal.hide();
+      $state.go("app.home", { reaload: "app.home" });
+      $scope.info = info;
+      $scope.nome = info.nome;
+      $scope.avatar = urlImg;
+    };
+
+    $scope.clearFabs = function() {
+      var fabs = document.getElementsByClassName("button-fab");
+      if (fabs.length) {
+        fabs[0].classList.remove("drop");
+      }
+    };
+
+    setTimeout(function() {
+      $scope.clearFabs();
+    }, 1000);
+
+    ionicMaterialInk.displayEffect();
+
     getPoints.get().then(function(res) {
-      console.log(res);
       dataService.clear();
       dataService.addBd(res.data);
     });
 
-    var info = TokenFactory.getInfo();
-    if (info) {
-      $scope.nome = info.nome;
-    }
+    $scope.info = {};
 
-    console.log($scope.nome);
-    // if (!TokenFactory.getToken()) {
-    //   $state.go("login");
-    // } else {
-    //   TokenFactory.getUserData(TokenFactory.getInfo().email).then(function(
-    //     res
-    //   ) {
-    //     $scope.nome = res.data.nome;
-    //     ActivityFactory.upload();
-    //     $timeout(function() {
-    //       ActivityFactory.download(TokenFactory.getInfo().id);
-    //     }, 5000);
-    //   });
-    // }
+    $ionicModal
+      .fromTemplateUrl("templates/perfil.html", {
+        scope: $scope,
+        animation: "slide-in-up"
+      })
+      .then(function(modal) {
+        $scope.modal = modal;
+      });
+
+    $ionicModal
+      .fromTemplateUrl("templates/avatars.html", {
+        scope: $scope,
+        animation: "slide-in-up"
+      })
+      .then(function(modal2) {
+        $scope.modal2 = modal2;
+      });
+
+    $ionicModal
+      .fromTemplateUrl("templates/sobre.html", {
+        scope: $scope,
+        animation: "slide-in-up"
+      })
+      .then(function(modal3) {
+        $scope.modal3 = modal3;
+      });
+
+    if (info) {
+      $scope.info = info;
+      $scope.nome = info.nome;
+      $scope.avatar = urlImg;
+    }
 
     $scope.logOut = function() {
       $ionicLoading.show({
@@ -67,8 +135,8 @@ angular
         },
         function(error) {
           $state.go("app.search");
+          alert("Leitura não efetuada!");
         }
       );
     };
-  })
-  
+  });

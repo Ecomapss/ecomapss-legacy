@@ -1,11 +1,12 @@
-<ion-view view-title="Map">
+<ion-view view-title="Geolocalização">
     <ion-content>
         <ion-content scroll="false">
-            <map on-create="mapCreated(map)"></map>
+            <map on-create="mapCreated(map, L)"></map>
         </ion-content>
 
-        <ion-footer-bar class="bar-positive">
-            <h1 style="font-family: roboto-light; font-size: 28px;" ng-click="centerOnMe()" class="title">Minha Localização</h1>
-        </ion-footer-bar>
+
+        <button id="navigate" ng-click="centerOnMe()" class="button button-balanced button-fab button-fab-bottom-right">
+            <i class="icon ion-navigate"></i>
+        </button>
     </ion-content>
 </ion-view>

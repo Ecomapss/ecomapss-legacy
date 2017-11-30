@@ -7,7 +7,8 @@ angular
     UserService,
     $ionicLoading,
     $ionicPopup,
-    TokenFactory
+    TokenFactory,
+    $ionicModal
   ) {
     var self = this;
     self.invalid = false;
@@ -16,18 +17,26 @@ angular
     if (TokenFactory.getInfo()) {
       $state.go("app.home");
     }
+
+    $ionicModal
+      .fromTemplateUrl("templates/avatarchoose.html", {
+        scope: $scope
+      })
+      .then(function(modal) {
+        $scope.modal = modal;
+      });
+
     self.login = function() {
       if (self.user.email == undefined || self.user.nome == undefined) {
         $ionicPopup.alert({
           title: "Campos vázios!",
           template: "Preencha todos os campos!"
         });
-      } else if (self.user.email.search("@") == -1){
+      } else if (self.user.email.search("@") == -1) {
         self.invalid = true;
-        
-      }else{
+      } else {
         TokenFactory.login(self.user);
-        $state.go("app.home", {}, { reload: "app" });
+        $state.go("loginavatar", {}, { reload: "app" });
       }
     };
   });

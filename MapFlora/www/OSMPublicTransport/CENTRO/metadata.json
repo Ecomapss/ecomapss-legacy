@@ -1,0 +1,12 @@
+{
+  "name": "vila alta",
+  "version": "1.1.0",
+  "description": "",
+  "type": "overlay",
+  "format": "png",
+  "minzoom": "13",
+  "maxzoom": "16",
+  "scale": "1.000000",
+  "bounds": [-39.42572065, -7.23164874, -39.39608208, -7.21862039],
+  "profile": "mercator"
+}

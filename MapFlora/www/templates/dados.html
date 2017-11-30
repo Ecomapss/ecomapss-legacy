@@ -2,48 +2,52 @@
     <ion-content>
         <div class="title-img-tree hero slide-up">
             <img id="inter-img" ng-src={{ctrl.source}}></img>
+
         </div>
+        <button ng-click="ctrl.go(ctrl.dados.loc, ctrl.dados.nome_pop)" class="button button-assertive button-fab button-fab-top-right">
+            <i class="icon ion-location"></i>
+        </button>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-leaf calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.nome_pop == '-1' || ctrl.dados.nome_pop == '.')" ng-click="showMore('Nomes Populares', ctrl.dados.nome_pop)"><i class="icon ion-leaf calm"></i>
                 {{ctrl.dados.nome_pop}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-erlenmeyer-flask calm"></i>
-                {{ctrl.dados.nome_cie}}   
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.nome_cie == '-1' || ctrl.dados.nome_cie == '.')" ng-click="showMore('Nomes Científicos', ctrl.dados.nome_cie)"><i class="icon ion-erlenmeyer-flask calm"></i>
+               <i style="font-style: italic;">{{ctrl.dados.nome_cie}}</i>   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-cloud calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.clima == '-1' || ctrl.dados.clima == '.')" ng-click="showMore('Tipo de vegetação', ctrl.dados.clima)"><i class="icon ion-cloud calm"></i>
                 {{ctrl.dados.clima}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-heart calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.familia == '-1' || ctrl.dados.familia == '.')" ng-click="showMore('Família', ctrl.dados.familia)"><i class="icon ion-heart calm"></i>
                 {{ctrl.dados.familia}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-clipboard calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.categoria == '-1' || ctrl.dados.categoria == '.')" ng-click="showMore('Forma de Vida', ctrl.dados.categoria)"><i class="icon ion-clipboard calm"></i>
                 {{ctrl.dados.categoria}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-flag calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.origem == '-1' || ctrl.dados.origem == '.')" ng-click="showMore('Origem', ctrl.dados.origem)"><i class="icon ion-flag calm"></i>
                 {{ctrl.dados.origem}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-contrast calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.luminosidade == '-1' || ctrl.dados.luminosidade == '.')" ng-click="showMore('Endemismo', ctrl.dados.luminosidade)"><i class="icon ion-contrast calm"></i>
                 {{ctrl.dados.luminosidade}}   
             </a>
         </div>
         <div class="list card light-bg">
-            <a class="item item-icon-left"><i class="icon ion-stats-bars calm"></i>
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.altura == '-1' || ctrl.dados.altura == '.')" ng-click="showMore('Altura', ctrl.dados.altura)"><i class="icon ion-stats-bars calm"></i>
                 {{ctrl.dados.altura}}   
             </a>
         </div>
-        <div class="list card light-bg">
+        <div class="list card light-bg" ng-if="!(ctrl.dados.info == '-1' || ctrl.dados.info == '.')">
             <div class="item item-body divide" id="font" style="color: black">
                 {{ctrl.classTree}} {{ctrl.dados.info}}
             </div>

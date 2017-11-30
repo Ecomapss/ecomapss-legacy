@@ -1,80 +1,119 @@
-angular
-  .module("starter.controllers")
-  .controller("DadosCtrl", [
-    "$scope",
-    "$timeout",
-    "TokenFactory",
-    "ActivityFactory",
-    "$http",
-    "$stateParams",
-    "dataService",
-    "$timeout",
-    "ionicMaterialMotion",
-    "ionicMaterialInk",
-    function(
-      $scope,
-      $timeout,
-      TokenFactory,
-      ActivityFactory,
-      $http,
-      $stateParams,
-      dataService,
-      $timeout,
-      ionicMaterialMotion,
-      ionicMaterialInk
-    ) {
-      var self = this;
-      //Recebe o id via url
-      self.id = $stateParams.id;
-      self.dados = {};
+angular.module("starter.controllers").controller("DadosCtrl", [
+  "$scope",
+  "$timeout",
+  "TokenFactory",
+  "ActivityFactory",
+  "$http",
+  "$stateParams",
+  "dataService",
+  "$timeout",
+  "ionicMaterialMotion",
+  "ionicMaterialInk",
+  "$state",
+  "$ionicActionSheet",
+  function(
+    $scope,
+    $timeout,
+    TokenFactory,
+    ActivityFactory,
+    $http,
+    $stateParams,
+    dataService,
+    $timeout,
+    ionicMaterialMotion,
+    ionicMaterialInk,
+    $state,
+    $ionicActionSheet
+  ) {
+    var self = this;
+    //Recebe o id via url
+    self.id = $stateParams.id;
+    self.dados = {};
 
-      function dataAtualFormatada() {
-        var data = new Date();
-        var dia = data.getDate();
-        if (dia.toString().length == 1) dia = "0" + dia;
-        var mes = data.getMonth() + 1;
-        if (mes.toString().length == 1) mes = "0" + mes;
-        var ano = data.getFullYear();
-        return dia + "/" + mes + "/" + ano;
-      }
-
-      //Busca no serviço pelo id da arvore
-      dataService.getById(self.id).then(function(data) {
-        oneACt = {
-          idUser: TokenFactory.getInfo().id,
-          email: TokenFactory.getInfo().email,
-          act:
-            "Visualizou uma " + data.nome_cie + " em " + dataAtualFormatada(),
-          date: new Date(),
-          uploaded: false
-        };
-
-        $http.get("img/trees/" + self.id + ".jpg").then(
-          function() {
-            self.source = "img/trees/" + self.id + ".jpg";
-            self.dados = data;
-            $scope.apply;
-          },
-          function() {
-            self.source = "img/stan.jpg";
-            self.dados = data;
-            $scope.apply;
+    dataService.getByIdJSON(
+      self.id,
+      function(res) {
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i]._id == self.id) {
+            self.dados = angular.copy(res.data[i]);
+            console.log(self.dados);
+            oneACt = {
+              idUser: TokenFactory.getInfo().id,
+              email: TokenFactory.getInfo().email,
+              act:
+                "Visualizou uma " +
+                res.data[i].nome_cie +
+                " em " +
+                dataAtualFormatada(),
+              date: new Date(),
+              uploaded: false
+            };
+            $http.get("img/trees/" + self.id + ".jpg").then(
+              function() {
+                self.source = "img/trees/" + self.id + ".jpg";
+                $scope.apply;
+              },
+              function() {
+                self.source = "img/stan.jpg";
+                $scope.apply;
+              }
+            );
+            ActivityFactory.add(oneACt);
           }
-        );
-        $timeout(function() {
-          ActivityFactory.add(oneACt);
-          ActivityFactory.upload();
-        }, 5000);
+        }
+        // }
+      },
+      function(err) {
+        console.log(err);
+      }
+    );
+
+    self.go = function(loc, nome_p) {
+      dataService.clearLoc();
+      dataService.setLocatios(loc);
+      $state.transitionTo("app.map", null, {
+        reload: true
       });
+    };
 
-      //Timeout para realizar animações
-      $timeout(function() {
-        ionicMaterialMotion.slideUp({
-          selector: ".slide-up"
-        });
-      }, 300);
-
-      //ativação de animações
-      ionicMaterialInk.displayEffect();
+    function dataAtualFormatada() {
+      var data = new Date();
+      var dia = data.getDate();
+      if (dia.toString().length == 1) dia = "0" + dia;
+      var mes = data.getMonth() + 1;
+      if (mes.toString().length == 1) mes = "0" + mes;
+      var ano = data.getFullYear();
+      return dia + "/" + mes + "/" + ano;
     }
-  ]);
+
+    //Timeout para realizar animações
+    $timeout(function() {
+      ionicMaterialMotion.slideUp({
+        selector: ".slide-up"
+      });
+    }, 300);
+
+
+    // Informações
+  $scope.showMore = function(title, data) {
+    $ionicActionSheet.show({
+      titleText: title+': ' + data,
+      cancelText: 'Fechar',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        return true;
+      }
+    });
+  };
+
+    //ativação de animações
+    ionicMaterialInk.displayEffect();
+  }
+]);
