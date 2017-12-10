@@ -93,6 +93,15 @@ angular
             controller: "DadosCtrl as ctrl"
           }
         }
+      })
+      .state("app.dadosfosseis", {
+        url: "/dadosfosseis/:id",
+        views: {
+          search: {
+            templateUrl: "templates/dadosfosseis.html",
+            controller: "DadosFosseisCtrl as ctrl"
+          }
+        }
       });
 
     var bd_token = JSON.parse(

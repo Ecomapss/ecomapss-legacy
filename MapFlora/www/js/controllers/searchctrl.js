@@ -18,8 +18,9 @@ angular.module("starter.controllers").controller("SearchCtrl", [
     ionicMaterialMotion,
     ionicMaterialInk,
     dataService
-    ) {
+  ) {
     var self = this;
+    self.titulo = ""
     self.se = false;
     self.dados = [];
     self.todoVetor = [];
@@ -35,7 +36,7 @@ angular.module("starter.controllers").controller("SearchCtrl", [
       '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
     });
     //Pegando dados no serviço
-    dataService.list().then(function(data) {
+    dataService.list().then(function(data) { 
       if (data.length) {
         self.todoVetor = data[0];
         self.dados = data[0];
@@ -102,7 +103,23 @@ angular.module("starter.controllers").controller("SearchCtrl", [
 
     //Função para mudar view para dados
     self.viewData = function(id) {
-      $state.go("app.dados", { id: id });
+      item = self.todoVetor.find(function(valor){
+        return valor._id == id;
+      });
+      console.log(id);
+      console.log(item);
+      if(item.inseto == true){
+
+      }else if(item.fossil == true){
+        
+        $state.go("app.dadosfosseis", { id: id });
+      }else if(item.historia == true){
+        
+      }else if(typeof item.inseto == "undefined" || typeof item.fossil == "undefined" || typeof item.historia == "undefined"){
+        $state.go("app.dados", { id: id });
+      }
+
+      
     };
   }
   ]);

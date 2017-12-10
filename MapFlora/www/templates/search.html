@@ -19,11 +19,11 @@
                 </div>
                 <div class="padding topApart">
                 <ion-item class="neotic" ng-repeat="item in ctrl.dados | filter:search" ng-click="ctrl.viewData(item._id)">
-                        <i style="font-style: italic;">{{item.nome_cie}}</i>
-                        <p>{{item.nome_pop}}</p>
+                        <i style="font-style: italic;">{{item.nome_cie || item.designacao  || item.ordem || item.titulo}}</i>
+                        <p>{{item.nome_pop || item.idade || item.filo || item.info}}</p>
                     </ion-item>
                 </div>
             </ion-list>
-    </div>
+    </div> 
 </ion-content>
 </ion-view>
