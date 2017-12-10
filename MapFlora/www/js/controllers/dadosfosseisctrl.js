@@ -1,4 +1,4 @@
-angular.module("starter.controllers").controller("DadosCtrl", [
+angular.module("starter.controllers").controller("DadosFosseisCtrl", [
   "$scope",
   "$timeout",
   "TokenFactory",
@@ -36,6 +36,7 @@ angular.module("starter.controllers").controller("DadosCtrl", [
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i]._id == self.id) {
             self.dados = angular.copy(res.data[i]);
+            console.log(self.dados);
             oneACt = {
               idUser: TokenFactory.getInfo().id,
               email: TokenFactory.getInfo().email,
@@ -47,9 +48,9 @@ angular.module("starter.controllers").controller("DadosCtrl", [
               date: new Date(),
               uploaded: false
             };
-            $http.get("img/trees/" + self.id + ".jpg").then(
+            $http.get("img/fossil/" + self.id + ".jpg").then(
               function() {
-                self.source = "img/trees/" + self.id + ".jpg";
+                self.source = "img/fossil/" + self.id + ".jpg";
                 $scope.apply;
               },
               function() {

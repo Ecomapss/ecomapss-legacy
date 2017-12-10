@@ -1,5 +1,7 @@
 angular
   .module("starter.services", [])
+
+  
   .factory("TokenFactory", function($http) {
     var baseURL = "http://calm-spire-23308.herokuapp.com/";
 
@@ -85,6 +87,10 @@ angular
       }
     };
   })
+
+
+
+
   .service("UserService", function() {
     // For the purpose of this example I will store user data on ionic local storage but you should save it on a database
     var setUser = function(user_data) {
@@ -100,6 +106,9 @@ angular
       setUser: setUser
     };
   })
+
+
+
   .factory("getPoints", [
     "$http",
     "$q",
@@ -112,6 +121,10 @@ angular
       };
     }
   ])
+
+
+
+
   .factory("dataService", [
     "$ionicPopup",
     "$q",
@@ -196,6 +209,11 @@ angular
       };
     }
   ])
+
+
+
+
+
   .factory("ActivityFactory", function($http) {
     var baseURL = "http://calm-spire-23308.herokuapp.com/";
 
