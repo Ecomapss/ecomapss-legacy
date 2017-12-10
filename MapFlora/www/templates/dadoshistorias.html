@@ -1,0 +1,32 @@
+<ion-view view-title="Voltar">
+    <ion-content>
+
+            <!-- idade
+            procedencia
+            estratigrafia   -
+            _id
+            nome   -
+            info    -
+            fossil -->
+
+
+        <div class="title-img-tree hero slide-up">
+            <img id="inter-img" ng-src={{ctrl.source}}></img>
+
+        </div>
+        <button ng-click="ctrl.go(ctrl.dados.loc, ctrl.dados.nome_pop)" class="button button-assertive button-fab button-fab-top-right">
+            <i class="icon ion-location"></i>
+        </button>
+        <div class="list card light-bg">
+            <a class="item item-icon-left" ng-if="!(ctrl.dados.nome == '-1' || ctrl.dados.nome == '.' || typeof ctrl.dados.info == 'undefined')" ng-click="showMore('Designação', ctrl.dados.nome)"><i class="icon ion-leaf calm"></i>
+                {{ctrl.dados.nome}}   
+            </a>
+        </div>
+        <div class="list card light-bg" ng-if="!(ctrl.dados.info == '-1' || ctrl.dados.info == '.' || typeof ctrl.dados.info == 'undefined')">
+            <div class="item item-body divide" id="font" style="color: black">
+                {{ctrl.classTree}} {{ctrl.dados.info}}
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
