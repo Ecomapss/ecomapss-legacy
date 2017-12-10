@@ -102,6 +102,24 @@ angular
             controller: "DadosFosseisCtrl as ctrl"
           }
         }
+      })
+      .state("app.dadosinsetos", {
+        url: "/dadosinsetos/:id",
+        views: {
+          search: {
+            templateUrl: "templates/dadosinsetos.html",
+            controller: "DadosInsetosCtrl as ctrl"
+          }
+        }
+      })
+      .state("app.dadoshistorias", {
+        url: "/dadoshistorias/:id",
+        views: {
+          search: {
+            templateUrl: "templates/dadoshistorias.html",
+            controller: "DadosHistoriasCtrl as ctrl"
+          }
+        }
       });
 
     var bd_token = JSON.parse(
