@@ -1211,11 +1211,11 @@
     },
     {
         "idade": "Cretáceo",
-        "procedencia": "",
+        "procedencia": "oi",
         "estratigrafia": "Membro Romualdo/ Formação Santana",
         "_id": "5a2704036132ff0a62d50aeb",
         "designacao": "Cladocyclus",
-        "info": "",
+        "info": "oi",
         "fossil": true
     },
     {
@@ -1224,7 +1224,7 @@
         "estratigrafia": "Membro Crato/ Santana",
         "_id": "5a2704486132ff0a62d50aed",
         "designacao": "Orthoptera (Esperança)",
-        "info": "oioioi",
+        "info": "",
         "fossil": true
     },
     {

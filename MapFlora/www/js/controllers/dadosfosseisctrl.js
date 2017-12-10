@@ -76,6 +76,11 @@ angular.module("starter.controllers").controller("DadosFosseisCtrl", [
       });
     };
 
+
+    self.verify = function(dado){
+      return !(dado == '-1' || dado == '.' || dado == '')
+    }
+
     function dataAtualFormatada() {
       var data = new Date();
       var dia = data.getDate();
