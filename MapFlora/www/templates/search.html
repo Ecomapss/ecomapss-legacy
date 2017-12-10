@@ -6,6 +6,17 @@
                     <i class="icon ion-search placeholder-icon"></i>
                     <input type="text" ng-model="search" placeholder="BUSCAR">
                 </label>
+                
+                <div class="padding topApart">
+                
+                <div class="button-bar">
+                    <a class="button button-balanced" ng-click="ctrl.filterArvores()">Arvores</a> 
+                    <a class="button button-positive" ng-click="ctrl.filterFosseis()">Fosseis</a>
+                </div>
+                <div class="button-bar">
+                    <a class="button button-royal" ng-click="ctrl.filterInsetos()">Insetos</a>
+                    <a class="button button-calm" ng-click="ctrl.filterHistory()">História</a>
+                </div>
                 <div class="padding topApart">
                 <ion-item class="neotic" ng-repeat="item in ctrl.dados | filter:search" ng-click="ctrl.viewData(item._id)">
                         <i style="font-style: italic;">{{item.nome_cie}}</i>

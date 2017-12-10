@@ -22,6 +22,7 @@ angular.module("starter.controllers").controller("SearchCtrl", [
     var self = this;
     self.se = false;
     self.dados = [];
+    self.todoVetor = [];
     self.items = new Array();
     var count = new Number();
     var mid = 0;
@@ -36,19 +37,48 @@ angular.module("starter.controllers").controller("SearchCtrl", [
     //Pegando dados no serviço
     dataService.list().then(function(data) {
       if (data.length) {
+        self.todoVetor = data[0];
         self.dados = data[0];
         $ionicLoading.hide();
       } else {
         getPoints.get().then(function(res) {
+          self.todoVetor = res.data;
           self.dados = res.data;
           dataService.put(res.data);
           $ionicLoading.hide();
         });
       }
     });
+
+
     setTimeout(function () {
       ionicMaterialMotion.blinds();
     },1000);
+
+    self.filterHistory =  function(){
+      self.dados = self.todoVetor.filter(function(valor){
+          return valor.historia == true;
+      });
+    }
+
+    self.filterFosseis =  function(){
+      self.dados = self.todoVetor.filter(function(valor){
+          return valor.fossil == true;
+      });
+    }
+
+    self.filterInsetos = function(){
+      self.dados = self.todoVetor.filter(function(valor){
+        return valor.inseto == true;
+      });
+    }
+
+    self.filterArvores = function(){
+      self.dados = self.todoVetor.filter(function(valor){
+        return (typeof valor.inseto == "undefined" || typeof valor.fossil == "undefined" || typeof valor.historia == "undefined")
+      });
+    }
+
 
 
     // function filter()

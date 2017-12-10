@@ -1208,5 +1208,69 @@
             "clima": "Tropical",
             "_id": "59ee3c00fadb5e001169642b",
             "altura": "1 - 10 m"
-        }
+        },
+
+
+          {
+            "categoria": "Árvore, arvoreta",
+            "info": "La = -7.2330444     Lon = -39.4337889\nSuas propriedades medicinais são usadas pelos índios até hoje, principalmente em casos de problema de pele e picadas de cobra. Facilmente encontrada em território brasileiro, a planta tem sido muito usada para produção de remédios homeopáticos, cremes fitoterápicos e no tratamento da herpes labial e das aftas. O consumo da guaçatonga deve ser evitado por gestantes, pois a planta estimula contrações uterinas, podendo ocasionar um aborto espontâneo, e também por mulheres em fase de amamentação. Não existem registros de efeitos colaterais, mas é preciso, por precaução, evitar consumir em excesso e seguir apenas as recomendações.",
+            "luminosidade": "Sol pleno, meia sombra",
+            "loc": [],
+            "nome_pop": "Café bravo, café brabo, cabatão, guaçatonga, língua-de-tiú e pau-de-lagarto",
+            "__v": 0,
+            "nome_cie": "Historia",
+            "familia": "Flacourtiaceae",
+            "origem": "Cerrado",
+            "clima": "Tropical",
+            "_id": "59ee3c00fadb5e001169642bk",
+            "historia" : true
+        },
+
+            {
+            "categoria": "Árvore, arvoreta",
+            "info": "La = -7.2330444     Lon = -39.4337889\nSuas propriedades medicinais são usadas pelos índios até hoje, principalmente em casos de problema de pele e picadas de cobra. Facilmente encontrada em território brasileiro, a planta tem sido muito usada para produção de remédios homeopáticos, cremes fitoterápicos e no tratamento da herpes labial e das aftas. O consumo da guaçatonga deve ser evitado por gestantes, pois a planta estimula contrações uterinas, podendo ocasionar um aborto espontâneo, e também por mulheres em fase de amamentação. Não existem registros de efeitos colaterais, mas é preciso, por precaução, evitar consumir em excesso e seguir apenas as recomendações.",
+            "luminosidade": "Sol pleno, meia sombra",
+            "loc": [],
+            "nome_pop": "Café bravo, café brabo, cabatão, guaçatonga, língua-de-tiú e pau-de-lagarto",
+            "__v": 0,
+            "nome_cie": "fosseis",
+            "familia": "Flacourtiaceae",
+            "origem": "Cerrado",
+            "clima": "Tropical",
+            "_id": "59ee3c00fadb5e001169642bk",
+            "fossil" : true
+        },
+
+            {
+            "categoria": "Árvore, arvoreta",
+            "info": "La = -7.2330444     Lon = -39.4337889\nSuas propriedades medicinais são usadas pelos índios até hoje, principalmente em casos de problema de pele e picadas de cobra. Facilmente encontrada em território brasileiro, a planta tem sido muito usada para produção de remédios homeopáticos, cremes fitoterápicos e no tratamento da herpes labial e das aftas. O consumo da guaçatonga deve ser evitado por gestantes, pois a planta estimula contrações uterinas, podendo ocasionar um aborto espontâneo, e também por mulheres em fase de amamentação. Não existem registros de efeitos colaterais, mas é preciso, por precaução, evitar consumir em excesso e seguir apenas as recomendações.",
+            "luminosidade": "Sol pleno, meia sombra",
+            "loc": [],
+            "nome_pop": "Café bravo, café brabo, cabatão, guaçatonga, língua-de-tiú e pau-de-lagarto",
+            "__v": 0,
+            "nome_cie": "Insetos",
+            "familia": "Flacourtiaceae",
+            "origem": "Cerrado",
+            "clima": "Tropical",
+            "_id": "59ee3c00fadb5e001169642bk",
+            "inseto" : true
+        },
+         {
+            "categoria": "Árvore, arvoreta",
+            "info": "La = -7.2330444     Lon = -39.4337889\nSuas propriedades medicinais são usadas pelos índios até hoje, principalmente em casos de problema de pele e picadas de cobra. Facilmente encontrada em território brasileiro, a planta tem sido muito usada para produção de remédios homeopáticos, cremes fitoterápicos e no tratamento da herpes labial e das aftas. O consumo da guaçatonga deve ser evitado por gestantes, pois a planta estimula contrações uterinas, podendo ocasionar um aborto espontâneo, e também por mulheres em fase de amamentação. Não existem registros de efeitos colaterais, mas é preciso, por precaução, evitar consumir em excesso e seguir apenas as recomendações.",
+            "luminosidade": "Sol pleno, meia sombra",
+            "loc": [],
+            "nome_pop": "Café bravo, café brabo, cabatão, guaçatonga, língua-de-tiú e pau-de-lagarto",
+            "__v": 0,
+            "nome_cie": "Insetos",
+            "familia": "Flacourtiaceae",
+            "origem": "Cerrado",
+            "clima": "Tropical",
+            "_id": "59ee3c00fadb5e001169642bk",
+            "inseto" : true
+        }   
+        
+
+
+
     ]
