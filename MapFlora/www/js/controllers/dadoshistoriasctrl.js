@@ -93,6 +93,11 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
       });
     }, 300);
 
+    self.verify = function(dado){
+      return !(dado == '-1' || dado == '.' || dado == '')
+    }
+
+
 
     // Informações
   $scope.showMore = function(title, data) {

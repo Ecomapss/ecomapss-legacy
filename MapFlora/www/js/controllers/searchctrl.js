@@ -106,15 +106,15 @@ angular.module("starter.controllers").controller("SearchCtrl", [
       item = self.todoVetor.find(function(valor){
         return valor._id == id;
       });
+
       if(item.inseto){
         $state.go("app.dadosinsetos", { id: id });
-      }else if(item.fossil){
-        
+      }else if(item.fossil){  
         $state.go("app.dadosfosseis", { id: id });
       }else if(item.historia == true){
-        
+        $state.go("app.dadoshistorias", { id: id });  
       }else if(typeof item.inseto == "undefined" || typeof item.fossil == "undefined" || typeof item.historia == "undefined"){
-        
+        $state.go("app.dados", { id: id }); 
       }
 
       

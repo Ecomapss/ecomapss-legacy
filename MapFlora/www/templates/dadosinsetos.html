@@ -1,0 +1,44 @@
+<ion-view view-title="Voltar">
+    <ion-content>
+<!-- 
+        _id
+        ordem
+        filo
+        classe
+        info
+        reino 
+-->
+
+        <div class="title-img-tree hero slide-up">
+            <img id="inter-img" ng-src={{ctrl.source}}></img>
+        </div>
+        <div class="list card light-bg">
+            <a class="item item-icon-left" ng-if="ctrl.verify(ctrl.dados.ordem)" ng-click="showMore('Ordem', ctrl.dados.ordem)"><i class="icon ion-heart calm"></i>
+                {{ctrl.dados.ordem}}   
+            </a>
+        </div>
+        <div class="list card light-bg">
+                <a class="item item-icon-left" ng-if="ctrl.verify(ctrl.dados.filo)" ng-click="showMore('Filo', ctrl.dados.filo)"><i class="icon ion-bug calm"></i>
+                    {{ctrl.dados.filo}}   
+                </a>
+        </div>
+
+        <div class="list card light-bg">
+                <a class="item item-icon-left" ng-if="ctrl.verify(ctrl.dados.classe)" ng-click="showMore('Classe', ctrl.dados.classe)"><i class="icon ion-clipboard calm"></i>
+                    {{ctrl.dados.classe}}   
+                </a>
+        </div>
+
+        <div class="list card light-bg">
+                <a class="item item-icon-left" ng-if="ctrl.verify(ctrl.dados.reino)" ng-click="showMore('Reino', ctrl.dados.reino)"><i class="icon ion-bug calm"></i>
+                    {{ctrl.dados.reino}}   
+                </a>
+        </div>
+        <div class="list card light-bg" ng-if="ctrl.verify(ctrl.dados.info)">
+            <div class="item item-body divide" id="font" style="color: black">
+                {{ctrl.classTree}} {{ctrl.dados.info}}
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

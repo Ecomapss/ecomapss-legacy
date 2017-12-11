@@ -48,9 +48,9 @@ angular.module("starter.controllers").controller("DadosInsetosCtrl", [
               date: new Date(),
               uploaded: false
             };
-            $http.get("img/fossil/" + self.id + ".jpg").then(
+            $http.get("img/insetos/" + self.id + ".jpg").then(
               function() {
-                self.source = "img/fossil/" + self.id + ".jpg";
+                self.source = "img/insetos/" + self.id + ".jpg";
                 $scope.apply;
               },
               function() {
@@ -85,6 +85,13 @@ angular.module("starter.controllers").controller("DadosInsetosCtrl", [
       var ano = data.getFullYear();
       return dia + "/" + mes + "/" + ano;
     }
+
+
+
+    self.verify = function(dado){
+      return !(dado == '-1' || dado == '.' || dado == '')
+    }
+
 
     //Timeout para realizar animações
     $timeout(function() {
