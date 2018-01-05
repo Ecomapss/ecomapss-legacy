@@ -147,13 +147,6 @@ div.card .img-card img {
    /* font-family: "roboto-light" !important; */
 }
 
-.bar-header {
-    height: 50px;
-}
-
-.has-header {
-    top: 60px;
-}
 
 h1 {
     color: #fff;
@@ -573,13 +566,8 @@ ion-footer-bar {
     text-decoration: none;
 }
 
-.bar-header {
-    height: 48px;
-    font-size: 90px !important;
-}
-
 .has-header {
-    top: 0px;
+    top: -10px;
 }
 
 /*sobre  */

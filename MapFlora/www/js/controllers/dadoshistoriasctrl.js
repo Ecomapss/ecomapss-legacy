@@ -41,16 +41,16 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
               idUser: TokenFactory.getInfo().id,
               email: TokenFactory.getInfo().email,
               act:
-                "Visualizou uma " +
-                res.data[i].nome_cie +
+                "Visualizou uma história " +
+                res.data[i].titulo +
                 " em " +
                 dataAtualFormatada(),
               date: new Date(),
               uploaded: false
             };
-            $http.get("img/fossil/" + self.id + ".jpg").then(
+            $http.get("img/historico/" + self.id + ".jpg").then(
               function() {
-                self.source = "img/fossil/" + self.id + ".jpg";
+                self.source = "img/historico/" + self.id + ".jpg";
                 $scope.apply;
               },
               function() {

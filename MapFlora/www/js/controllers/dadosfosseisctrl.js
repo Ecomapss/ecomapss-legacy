@@ -36,17 +36,16 @@ angular.module("starter.controllers").controller("DadosFosseisCtrl", [
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i]._id == self.id) {
             self.dados = angular.copy(res.data[i]);
-            console.log(self.dados);
             oneACt = {
               idUser: TokenFactory.getInfo().id,
               email: TokenFactory.getInfo().email,
               act:
-                "Visualizou uma " +
-                res.data[i].nome_cie +
+                "Visualizou um fossil " +
+                res.data[i].designacao +
                 " em " +
                 dataAtualFormatada(),
               date: new Date(),
-              uploaded: false
+              uploaded: false                                                                                                                                                                                                                                                                                                                                 
             };
             $http.get("img/fossil/" + self.id + ".jpg").then(
               function() {

@@ -41,8 +41,8 @@ angular.module("starter.controllers").controller("DadosInsetosCtrl", [
               idUser: TokenFactory.getInfo().id,
               email: TokenFactory.getInfo().email,
               act:
-                "Visualizou uma " +
-                res.data[i].nome_cie +
+                "Visualizou um inseto " +
+                res.data[i].ordem +
                 " em " +
                 dataAtualFormatada(),
               date: new Date(),

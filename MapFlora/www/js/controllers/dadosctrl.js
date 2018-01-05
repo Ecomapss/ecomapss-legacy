@@ -40,7 +40,7 @@ angular.module("starter.controllers").controller("DadosCtrl", [
               idUser: TokenFactory.getInfo().id,
               email: TokenFactory.getInfo().email,
               act:
-                "Visualizou uma " +
+                "Visualizou uma árvore" +
                 res.data[i].nome_cie +
                 " em " +
                 dataAtualFormatada(),
