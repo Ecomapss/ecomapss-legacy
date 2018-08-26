@@ -27,13 +27,11 @@ angular
       });
 
     self.login = function() {
-      if (self.user.email == undefined || self.user.nome == undefined) {
+      if (self.user.nome == undefined) {
         $ionicPopup.alert({
           title: "Campos vázios!",
           template: "Preencha todos os campos!"
         });
-      } else if (self.user.email.search("@") == -1) {
-        self.invalid = true;
       } else {
         TokenFactory.login(self.user);
         $state.go("loginavatar", {}, { reload: "app" });

@@ -195,16 +195,23 @@ angular
           );
         },
         getById: function(id) {
-          var deferr = $q.defer();
-          var array = forest[0];
-          console.log(array);
-          for (i = 0; i < array.length; i++) {
-            if (array[i]._id.$oid === id) {
-              deferr.resolve(array[i]);
-              console.log(array[i]);
-            }
-          }
-          return deferr.promise;
+
+          return $q(function (resolve, reject) {
+            $http.get(baseURL + "trees.json").then(
+              function(res) {
+                if (res.data.length) {
+                  var response = res.data.filter(function (el) {
+                    return (el._id.$oid === id);
+                  })
+
+                  resolve(response);
+                }
+              },
+              function(err) {
+                reject(err);
+              }
+            );
+          })
         }
       };
     }

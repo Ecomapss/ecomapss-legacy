@@ -140,6 +140,14 @@ angular
           minZoom: 13,
           maxZoom: 16,
           zoom: 16
+        },
+        {
+          name: "TAUA",
+          lat: -5.39973789,
+          lng: -40.07294622,
+          minZoom: 13,
+          maxZoom: 16,
+          zoom: 16
         }
         ];
       }

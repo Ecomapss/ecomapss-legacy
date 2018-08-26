@@ -1,9 +1,9 @@
 {
   "name": "MapFlora",
-  "app_id": "391329c3",
   "integrations": {
     "cordova": {}
   },
   "type": "ionic1",
-  "watchPatterns": []
+  "watchPatterns": [],
+  "pro_id": "391329c3"
 }

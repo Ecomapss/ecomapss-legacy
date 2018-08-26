@@ -30,44 +30,44 @@ angular.module("starter.controllers").controller("DadosInsetosCtrl", [
     self.id = $stateParams.id;
     self.dados = {};
 
-    dataService.getByIdJSON(
-      self.id,
-      function(res) {
-        for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i]._id == self.id) {
-            self.dados = angular.copy(res.data[i]);
-            console.log(self.dados);
-            oneACt = {
-              idUser: TokenFactory.getInfo().id,
-              email: TokenFactory.getInfo().email,
-              act:
-                "Visualizou um inseto " +
-                res.data[i].ordem +
-                " em " +
-                dataAtualFormatada(),
-              date: new Date(),
-              uploaded: false
-            };
-            $http.get("img/insetos/" + self.id + ".jpg").then(
-              function() {
-                self.source = "img/insetos/" + self.id + ".jpg";
-                $scope.apply;
-              },
-              function() {
-                self.source = "img/stan.jpg";
-                $scope.apply;
-              }
-            );
-            ActivityFactory.add(oneACt);
+    dataService.getById(self.id).then(
+      function (res) {
+        self.dados = angular.copy(res[0]);
+        oneACt = {
+          idUser: TokenFactory.getInfo().id,
+          email: TokenFactory.getInfo().email,
+          act:
+            "Visualizou fauna " +
+            self.dados.ordem +
+            " em " +
+            dataAtualFormatada(),
+          date: new Date(),
+          uploaded: false
+        };
+        $http.get("fauna/" + self.id + ".jpg").then(
+          function () {
+            self.source = "fauna/" + self.id + ".jpg";
+            $scope.apply;
+          },
+          function () {
+            self.source = "img/stan.jpg";
+            $scope.apply;
           }
-        }
-        // }
-      },
-      function(err) {
-        console.log(err);
-      }
-    );
+        );
+        ActivityFactory.add(oneACt);
+      }).catch(
+        function (err) {
+          console.log(err);
+      });
 
+
+    self.go = function(loc, nome_p) {
+      dataService.clearLoc();
+      dataService.setLocatios(loc);
+      $state.transitionTo("app.map", null, {
+        reload: true
+      });
+    };
     self.go = function(loc, nome_p) {
       dataService.clearLoc();
       dataService.setLocatios(loc);

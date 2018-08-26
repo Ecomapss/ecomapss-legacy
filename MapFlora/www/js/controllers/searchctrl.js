@@ -76,7 +76,7 @@ angular.module("starter.controllers").controller("SearchCtrl", [
 
     self.filterArvores = function(){
       self.dados = self.todoVetor.filter(function(valor){
-        return (typeof valor.inseto == "undefined" || typeof valor.fossil == "undefined" || typeof valor.historia == "undefined")
+        return (typeof valor.inseto === "undefined" && typeof valor.fossil === "undefined" && typeof valor.historia === "undefined")
       });
     }
 
@@ -107,13 +107,16 @@ angular.module("starter.controllers").controller("SearchCtrl", [
         return valor._id == id;
       });
 
+      if (id.$oid) {
+        id = id.$oid;
+      }
       if(item.inseto){
         $state.go("app.dadosinsetos", { id: id });
       }else if(item.fossil){  
         $state.go("app.dadosfosseis", { id: id });
       }else if(item.historia == true){
         $state.go("app.dadoshistorias", { id: id });  
-      }else if(typeof item.inseto == "undefined" || typeof item.fossil == "undefined" || typeof item.historia == "undefined"){
+      }else if(typeof item.inseto == "undefined" && typeof item.fossil == "undefined" && typeof item.historia == "undefined"){
         $state.go("app.dados", { id: id }); 
       }
 

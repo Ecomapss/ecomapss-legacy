@@ -11,7 +11,7 @@ angular.module("starter.controllers").controller("DadosCtrl", [
   "ionicMaterialInk",
   "$state",
   "$ionicActionSheet",
-  function(
+  function (
     $scope,
     $timeout,
     TokenFactory,
@@ -30,44 +30,38 @@ angular.module("starter.controllers").controller("DadosCtrl", [
     self.id = $stateParams.id;
     self.dados = {};
 
-    dataService.getByIdJSON(
-      self.id,
-      function(res) {
-        for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i]._id == self.id) {
-            self.dados = angular.copy(res.data[i]);
-            oneACt = {
-              idUser: TokenFactory.getInfo().id,
-              email: TokenFactory.getInfo().email,
-              act:
-                "Visualizou uma árvore" +
-                res.data[i].nome_cie +
-                " em " +
-                dataAtualFormatada(),
-              date: new Date(),
-              uploaded: false
-            };
-            $http.get("img/trees/" + self.id + ".jpg").then(
-              function() {
-                self.source = "img/trees/" + self.id + ".jpg";
-                $scope.apply;
-              },
-              function() {
-                self.source = "img/stan.jpg";
-                $scope.apply;
-              }
-            );
-            ActivityFactory.add(oneACt);
+    dataService.getById(self.id).then(
+      function (res) {
+        self.dados = angular.copy(res[0]);
+        oneACt = {
+          idUser: TokenFactory.getInfo().id,
+          email: TokenFactory.getInfo().email,
+          act:
+            "Visualizou uma árvore" +
+            self.dados.nome_cie +
+            " em " +
+            dataAtualFormatada(),
+          date: new Date(),
+          uploaded: false
+        };
+        $http.get("img/trees/" + self.id + ".jpg").then(
+          function () {
+            self.source = "img/trees/" + self.id + ".jpg";
+            $scope.apply;
+          },
+          function () {
+            self.source = "img/stan.jpg";
+            $scope.apply;
           }
-        }
-        // }
-      },
-      function(err) {
-        console.log(err);
-      }
-    );
+        );
+        ActivityFactory.add(oneACt);
+      }).catch(
+        function (err) {
+          console.log(err);
+      });
 
-    self.go = function(loc, nome_p) {
+    
+        self.go = function (loc, nome_p) {
       dataService.clearLoc();
       dataService.setLocatios(loc);
       $state.transitionTo("app.map", null, {
@@ -86,7 +80,7 @@ angular.module("starter.controllers").controller("DadosCtrl", [
     }
 
     //Timeout para realizar animações
-    $timeout(function() {
+    $timeout(function () {
       ionicMaterialMotion.slideUp({
         selector: ".slide-up"
       });
@@ -94,23 +88,23 @@ angular.module("starter.controllers").controller("DadosCtrl", [
 
 
     // Informações
-  $scope.showMore = function(title, data) {
-    $ionicActionSheet.show({
-      titleText: title+': ' + data,
-      cancelText: 'Fechar',
-      cancel: function() {
-        console.log('CANCELLED');
-      },
-      buttonClicked: function(index) {
-        console.log('BUTTON CLICKED', index);
-        return true;
-      },
-      destructiveButtonClicked: function() {
-        console.log('DESTRUCT');
-        return true;
-      } 
-    });
-  };
+    $scope.showMore = function (title, data) {
+      $ionicActionSheet.show({
+        titleText: title + ': ' + data,
+        cancelText: 'Fechar',
+        cancel: function () {
+          console.log('CANCELLED');
+        },
+        buttonClicked: function (index) {
+          console.log('BUTTON CLICKED', index);
+          return true;
+        },
+        destructiveButtonClicked: function () {
+          console.log('DESTRUCT');
+          return true;
+        }
+      });
+    };
 
     //ativação de animações
     ionicMaterialInk.displayEffect();

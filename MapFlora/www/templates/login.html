@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row" style="text-align: center; color: white;">
-                Por favor, insira o seu nome e-mail nos campos abaixo! (Não é necessario conexão com a internet)
+                Por favor, insira o seu nome no campo abaixo! (Não é necessario conexão com a internet)
             </div>
         </div>
         <form name="loginForm" ng-submit="lg.login()">
@@ -17,8 +17,6 @@
                 <div class="col col-center">
                     <div class="padding">
                         <ion-list>
-                            <input class="item loginpage" ng-model="lg.user.email" type="text" placeholder="Email">
-                            <span class="pull-right" ng-if="lg.invalid" style="color: red;">DIGITE UM EMAIL VÁLIDO!</span>
                             <input class="item loginpage" ng-model="lg.user.nome" type="text" placeholder="Nome">
                         </ion-list>
                     </div>

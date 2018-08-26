@@ -30,42 +30,37 @@ angular.module("starter.controllers").controller("DadosFosseisCtrl", [
     self.id = $stateParams.id;
     self.dados = {};
 
-    dataService.getByIdJSON(
-      self.id,
-      function(res) {
-        for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i]._id == self.id) {
-            self.dados = angular.copy(res.data[i]);
-            oneACt = {
-              idUser: TokenFactory.getInfo().id,
-              email: TokenFactory.getInfo().email,
-              act:
-                "Visualizou um fossil " +
-                res.data[i].designacao +
-                " em " +
-                dataAtualFormatada(),
-              date: new Date(),
-              uploaded: false                                                                                                                                                                                                                                                                                                                                 
-            };
-            $http.get("img/fossil/" + self.id + ".jpg").then(
-              function() {
-                self.source = "img/fossil/" + self.id + ".jpg";
-                $scope.apply;
-              },
-              function() {
-                self.source = "img/stan.jpg";
-                $scope.apply;
-              }
-            );
-            ActivityFactory.add(oneACt);
+
+    dataService.getById(self.id).then(
+      function (res) {
+        self.dados = angular.copy(res[0]);
+        oneACt = {
+          idUser: TokenFactory.getInfo().id,
+          email: TokenFactory.getInfo().email,
+          act:
+            "Visualizou um fossil" +
+            self.dados.designacao +
+            " em " +
+            dataAtualFormatada(),
+          date: new Date(),
+          uploaded: false
+        };
+        $http.get("img/fossil/" + self.id + ".jpg").then(
+          function () {
+            self.source = "img/fossil/" + self.id + ".jpg";
+            $scope.apply;
+          },
+          function () {
+            self.source = "img/stan.jpg";
+            $scope.apply;
           }
-        }
-        // }
-      },
-      function(err) {
-        console.log(err);
-      }
-    );
+        );
+        ActivityFactory.add(oneACt);
+      }).catch(
+        function (err) {
+          console.log(err);
+      });
+
 
     self.go = function(loc, nome_p) {
       dataService.clearLoc();

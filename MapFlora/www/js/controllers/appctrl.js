@@ -130,7 +130,7 @@ angular
           if (data.text) {
           dataService.getByIdJSON(data.text, (res)=> {
              for (var i = 0; i < res.data.length; i++) {
-                if (res.data[i]._id == self.id) {
+                if (res.data[i]._id.$oid == self.id) {
                   if (res.data[i].fossil)
                     $state.go("app.dadosfosseis", { id: data.text });
                   else if(res.data[i].inseto)
