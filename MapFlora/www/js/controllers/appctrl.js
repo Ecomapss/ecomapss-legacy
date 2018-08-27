@@ -128,19 +128,15 @@ angular
       $cordovaBarcodeScanner.scan().then(
         function(data) {
           if (data.text) {
-          dataService.getByIdJSON(data.text, (res)=> {
-             for (var i = 0; i < res.data.length; i++) {
-                if (res.data[i]._id.$oid == self.id) {
-                  if (res.data[i].fossil)
-                    $state.go("app.dadosfosseis", { id: data.text });
-                  else if(res.data[i].inseto)
-                    $state.go("app.dadosinsetos", { id: data.text });
-                  else if (res.data[i].historia)
-                    $state.go("app.dadoshistorias", { id: data.text });
-                  else 
-                    $state.go("app.dados", { id: data.text });  
-                }
-             }
+          dataService.getById(data.text, (res)=> {
+            if (res[0].fossil)
+              $state.go("app.dadosfosseis", { id: data.text });
+            else if(res[0].inseto)
+              $state.go("app.dadosinsetos", { id: data.text });
+            else if (res[0].historia)
+              $state.go("app.dadoshistorias", { id: data.text });
+            else 
+              $state.go("app.dados", { id: data.text });  
           })
           } else {
             $state.go("app.search");

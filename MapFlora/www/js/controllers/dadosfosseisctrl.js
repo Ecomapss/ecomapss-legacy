@@ -112,7 +112,5 @@ angular.module("starter.controllers").controller("DadosFosseisCtrl", [
     });
   };
 
-    //ativação de animações
-    ionicMaterialInk.displayEffect();
   }
 ]);

@@ -11,7 +11,7 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
   "ionicMaterialInk",
   "$state",
   "$ionicActionSheet",
-  function(
+  function (
     $scope,
     $timeout,
     TokenFactory,
@@ -36,8 +36,7 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
         oneACt = {
           idUser: TokenFactory.getInfo().id,
           email: TokenFactory.getInfo().email,
-          act:
-            "Visualizou uma história" +
+          act: "Visualizou uma história" +
             self.dados.designacao +
             " em " +
             dataAtualFormatada(),
@@ -56,12 +55,12 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
         );
         ActivityFactory.add(oneACt);
       }).catch(
-        function (err) {
-          console.log(err);
+      function (err) {
+        console.log(err);
       });
 
 
-    self.go = function(loc, nome_p) {
+    self.go = function (loc, nome_p) {
       dataService.clearLoc();
       dataService.setLocatios(loc);
       $state.transitionTo("app.map", null, {
@@ -69,7 +68,7 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
       });
     };
 
-    self.go = function(loc, nome_p) {
+    self.go = function (loc, nome_p) {
       dataService.clearLoc();
       dataService.setLocatios(loc);
       $state.transitionTo("app.map", null, {
@@ -88,38 +87,35 @@ angular.module("starter.controllers").controller("DadosHistoriasCtrl", [
     }
 
     //Timeout para realizar animações
-    $timeout(function() {
+    $timeout(function () {
       ionicMaterialMotion.slideUp({
         selector: ".slide-up"
       });
     }, 300);
 
-    self.verify = function(dado){
+    self.verify = function (dado) {
       return !(dado == '-1' || dado == '.' || dado == '')
     }
 
 
 
     // Informações
-  $scope.showMore = function(title, data) {
-    $ionicActionSheet.show({
-      titleText: title+': ' + data,
-      cancelText: 'Fechar',
-      cancel: function() {
-        console.log('CANCELLED');
-      },
-      buttonClicked: function(index) {
-        console.log('BUTTON CLICKED', index);
-        return true;
-      },
-      destructiveButtonClicked: function() {
-        console.log('DESTRUCT');
-        return true;
-      } 
-    });
-  };
-
-    //ativação de animações
-    ionicMaterialInk.displayEffect();
+    $scope.showMore = function (title, data) {
+      $ionicActionSheet.show({
+        titleText: title + ': ' + data,
+        cancelText: 'Fechar',
+        cancel: function () {
+          console.log('CANCELLED');
+        },
+        buttonClicked: function (index) {
+          console.log('BUTTON CLICKED', index);
+          return true;
+        },
+        destructiveButtonClicked: function () {
+          console.log('DESTRUCT');
+          return true;
+        }
+      });
+    };
   }
 ]);
